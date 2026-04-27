@@ -42,9 +42,10 @@ export default function Navbar() {
             alignItems: "center",
             justifyContent: "space-between",
             height: "64px",
+            gap: "16px",
           }}
         >
-          {/* Logo — flex-shrink: 0 prevents compression on small screens */}
+          {/* Logo */}
           <a
             href="#"
             style={{
@@ -52,7 +53,7 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: "10px",
-              flexShrink: 0,           // ✅ FIX: prevent logo squishing
+              flexShrink: 0,
             }}
           >
             <div
@@ -107,18 +108,18 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA — hidden on mobile via CSS class */}
+          {/* CTA */}
           <a
             href="https://wa.me/918825512668?text=Hi%2C%20I%20want%20to%20know%20more%20about%20VendDesk"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary desktop-cta"   // ✅ FIX: hide on mobile
+            className="btn-primary desktop-cta"
             style={{
               padding: "8px 20px",
               borderRadius: "8px",
               textDecoration: "none",
               fontSize: "0.875rem",
-              flexShrink: 0,                      // ✅ FIX: prevent button squishing
+              flexShrink: 0,
             }}
           >
             Get Demo
@@ -135,24 +136,42 @@ export default function Navbar() {
               color: "#c9d1d9",
               cursor: "pointer",
               padding: "4px",
-              display: "none",        // hidden by default; CSS shows on mobile
+              flexShrink: 0,
+              display: "none",
             }}
           >
-            <div style={{
-              width: "22px", height: "2px", background: "currentColor",
-              marginBottom: "5px", borderRadius: "2px", transition: "all 0.3s",
-              transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
-            }} />
-            <div style={{
-              width: "22px", height: "2px", background: "currentColor",
-              marginBottom: "5px", borderRadius: "2px", transition: "all 0.3s",
-              opacity: menuOpen ? 0 : 1,
-            }} />
-            <div style={{
-              width: "22px", height: "2px", background: "currentColor",
-              borderRadius: "2px", transition: "all 0.3s",
-              transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none",
-            }} />
+            <div
+              style={{
+                width: "22px",
+                height: "2px",
+                background: "currentColor",
+                marginBottom: "5px",
+                borderRadius: "2px",
+                transition: "all 0.3s",
+                transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
+              }}
+            />
+            <div
+              style={{
+                width: "22px",
+                height: "2px",
+                background: "currentColor",
+                marginBottom: "5px",
+                borderRadius: "2px",
+                transition: "all 0.3s",
+                opacity: menuOpen ? 0 : 1,
+              }}
+            />
+            <div
+              style={{
+                width: "22px",
+                height: "2px",
+                background: "currentColor",
+                borderRadius: "2px",
+                transition: "all 0.3s",
+                transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none",
+              }}
+            />
           </button>
         </div>
 
@@ -162,7 +181,7 @@ export default function Navbar() {
             style={{
               padding: "16px 0 24px",
               borderTop: "1px solid rgba(48, 54, 61, 0.6)",
-              background: "rgba(13, 17, 23, 0.98)", // ✅ FIX: solid bg so it's readable
+              background: "rgba(13, 17, 23, 0.98)",
               display: "flex",
               flexDirection: "column",
               gap: "4px",
@@ -184,7 +203,7 @@ export default function Navbar() {
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = "#ff914d";
-                  e.currentTarget.style.background = "rgba(255, 145, 77, 0.08)"; // ✅ FIX: orange tint
+                  e.currentTarget.style.background = "rgba(255, 145, 77, 0.08)";
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.color = "#c9d1d9";
@@ -200,9 +219,9 @@ export default function Navbar() {
 
       <style>{`
         @media (max-width: 768px) {
-          .desktop-nav  { display: none !important; }
-          .desktop-cta  { display: none !important; }   /* ✅ FIX: hide CTA on mobile */
-          .mobile-menu-btn { display: block !important; }
+          .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
+          .mobile-menu-btn { display: block !important; margin-right: "-10rem" }
         }
       `}</style>
     </header>
