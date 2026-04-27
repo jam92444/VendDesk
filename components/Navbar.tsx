@@ -44,7 +44,7 @@ export default function Navbar() {
             height: "64px",
           }}
         >
-          {/* Logo */}
+          {/* Logo — flex-shrink: 0 prevents compression on small screens */}
           <a
             href="#"
             style={{
@@ -52,6 +52,7 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: "10px",
+              flexShrink: 0,           // ✅ FIX: prevent logo squishing
             }}
           >
             <div
@@ -65,14 +66,9 @@ export default function Navbar() {
               <img
                 src="/favicon.ico"
                 alt="VendDesk Logo"
-                style={{
-                  width: "45px",
-                  height: "45px",
-                  objectFit: "contain",
-                }}
+                style={{ width: "45px", height: "45px", objectFit: "contain" }}
               />
             </div>
-
             <span
               style={{
                 fontFamily: "'Syne', sans-serif",
@@ -88,14 +84,13 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav
-            style={{ display: "flex", gap: "32px", alignItems: "center" }}
             className="desktop-nav"
+            style={{ display: "flex", gap: "32px", alignItems: "center" }}
           >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="nav-link"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: "0.875rem",
@@ -112,17 +107,18 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
+          {/* CTA — hidden on mobile via CSS class */}
           <a
             href="https://wa.me/918825512668?text=Hi%2C%20I%20want%20to%20know%20more%20about%20VendDesk"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-primary desktop-cta"   // ✅ FIX: hide on mobile
             style={{
               padding: "8px 20px",
               borderRadius: "8px",
               textDecoration: "none",
               fontSize: "0.875rem",
+              flexShrink: 0,                      // ✅ FIX: prevent button squishing
             }}
           >
             Get Demo
@@ -131,51 +127,32 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
+            className="mobile-menu-btn"
+            aria-label="Toggle menu"
             style={{
               background: "none",
               border: "none",
               color: "#c9d1d9",
               cursor: "pointer",
               padding: "4px",
-              display: "none",
+              display: "none",        // hidden by default; CSS shows on mobile
             }}
-            className="mobile-menu-btn"
-            aria-label="Toggle menu"
           >
-            <div
-              style={{
-                width: "22px",
-                height: "2px",
-                background: "currentColor",
-                marginBottom: "5px",
-                borderRadius: "2px",
-                transition: "all 0.3s",
-                transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
-              }}
-            />
-            <div
-              style={{
-                width: "22px",
-                height: "2px",
-                background: "currentColor",
-                marginBottom: "5px",
-                borderRadius: "2px",
-                opacity: menuOpen ? 0 : 1,
-                transition: "all 0.3s",
-              }}
-            />
-            <div
-              style={{
-                width: "22px",
-                height: "2px",
-                background: "currentColor",
-                borderRadius: "2px",
-                transition: "all 0.3s",
-                transform: menuOpen
-                  ? "rotate(-45deg) translateY(-7px)"
-                  : "none",
-              }}
-            />
+            <div style={{
+              width: "22px", height: "2px", background: "currentColor",
+              marginBottom: "5px", borderRadius: "2px", transition: "all 0.3s",
+              transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
+            }} />
+            <div style={{
+              width: "22px", height: "2px", background: "currentColor",
+              marginBottom: "5px", borderRadius: "2px", transition: "all 0.3s",
+              opacity: menuOpen ? 0 : 1,
+            }} />
+            <div style={{
+              width: "22px", height: "2px", background: "currentColor",
+              borderRadius: "2px", transition: "all 0.3s",
+              transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none",
+            }} />
           </button>
         </div>
 
@@ -185,6 +162,7 @@ export default function Navbar() {
             style={{
               padding: "16px 0 24px",
               borderTop: "1px solid rgba(48, 54, 61, 0.6)",
+              background: "rgba(13, 17, 23, 0.98)", // ✅ FIX: solid bg so it's readable
               display: "flex",
               flexDirection: "column",
               gap: "4px",
@@ -206,7 +184,7 @@ export default function Navbar() {
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = "#ff914d";
-                  e.currentTarget.style.background = "rgba(34,164,110,0.05)";
+                  e.currentTarget.style.background = "rgba(255, 145, 77, 0.08)"; // ✅ FIX: orange tint
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.color = "#c9d1d9";
@@ -222,7 +200,8 @@ export default function Navbar() {
 
       <style>{`
         @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
+          .desktop-nav  { display: none !important; }
+          .desktop-cta  { display: none !important; }   /* ✅ FIX: hide CTA on mobile */
           .mobile-menu-btn { display: block !important; }
         }
       `}</style>

@@ -4,37 +4,37 @@ const comparisons = [
   {
     feature: "Internet Required",
     tally: "✗ Always online",
-    bizdesk: "✓ 100% Offline",
+    venddesk: "✓ 100% Offline",
     tallyBad: true,
   },
   {
     feature: "Pricing Model",
     tally: "✗ Annual subscription",
-    bizdesk: "✓ One-time ₹1499",
+    venddesk: "✓ One-time ₹1499",
     tallyBad: true,
   },
   {
     feature: "Ease of Use",
     tally: "✗ Complex & technical",
-    bizdesk: "✓ Simple, anyone can use",
+    venddesk: "✓ Simple, anyone can use",
     tallyBad: true,
   },
   {
     feature: "Setup Time",
     tally: "✗ Hours + training",
-    bizdesk: "✓ Ready in 5 minutes",
+    venddesk: "✓ Ready in 5 minutes",
     tallyBad: true,
   },
   {
     feature: "Target User",
     tally: "✗ Accountants & CA firms",
-    bizdesk: "✓ Shop owners & SMEs",
+    venddesk: "✓ Shop owners & SMEs",
     tallyBad: true,
   },
   {
     feature: "Data Backup",
     tally: "✗ Cloud only",
-    bizdesk: "✓ Local + Google Drive",
+    venddesk: "✓ Local + Google Drive",
     tallyBad: true,
   },
 ];
@@ -85,7 +85,7 @@ export default function WhyChooseUs() {
               lineHeight: 1.7,
             }}
           >
-            Tally is built for chartered accountants. BizDesk is built for you.
+            Tally is built for chartered accountants. venddesk is built for you.
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export default function WhyChooseUs() {
                   <span style={{ color: "#22a46e", marginRight: "4px" }}>
                     ✓
                   </span>
-                  {row.bizdesk.slice(2)}
+                  {row.venddesk.slice(2)}
                 </div>
               </div>
             ))}

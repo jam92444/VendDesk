@@ -60,7 +60,7 @@ export default function TargetUsers() {
             Built for real businesses, not corporations
           </h2>
           <p style={{ color: '#6e7681', fontSize: '1rem', maxWidth: '480px', margin: '0 auto', lineHeight: 1.7 }}>
-            If you run a small business in India, BizDesk was designed with you in mind.
+            If you run a small business in India, VendDesk was designed with you in mind.
           </p>
         </div>
 
